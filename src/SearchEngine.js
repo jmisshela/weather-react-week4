@@ -3,8 +3,19 @@ import axios from "axios";
 
 export default function SearchEngine() {
   const [city, setCity] = useState("");
+  const [loaded, setLoaded] = useState(false);
+  const [weather, setWeather] = useState({});
 
-  function displayWeather(response) {}
+  function displayWeather(response) {
+    setLoaded(true);
+    setWeather({
+      temperature: Math.round(response.data.main.temp),
+      wind: response.data.wind.speed,
+      humidity: response.data.main.humidity,
+      description: response.data.weather[0].description,
+      icon: `URL is https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+    });
+  }
 
   function handleSubmit(event) {
     event.prevemtDefault();
@@ -17,7 +28,7 @@ export default function SearchEngine() {
     setCity(event.target.value);
   }
 
-  return (
+  let form = (
     <form onSubmit={handleSubmit}>
       <input type="search" placeholder="Enter a city.." onChange={updateCity} />
       <input type="submit" value="Search" />
