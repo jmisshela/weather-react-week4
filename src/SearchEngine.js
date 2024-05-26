@@ -5,9 +5,11 @@ export default function SearchEngine() {
     event.prevemtDefault();
   }
 
+  function updateCity(event) {}
+
   return (
     <form onSubmit={handleSubmit}>
-      <input type="search" placeholder="Enter a city.." />
+      <input type="search" placeholder="Enter a city.." onChange={updateCity} />
       <input type="submit" value="Search" />
     </form>
   );
