@@ -34,4 +34,23 @@ export default function SearchEngine() {
       <input type="submit" value="Search" />
     </form>
   );
+
+  if (loaded) {
+    return (
+      <div>
+        {form}
+        <ul>
+          <li>Temperature: {weather.temperature}°C</li>
+          <li>Description: {weather.description}</li>
+          <li>Humidity: {weather.humidity}%</li>
+          <li>Wind: {weather.wind}km/h</li>
+          <li>
+            <img src={weather.icon} alt={weather.description} />
+          </li>
+        </ul>
+      </div>
+    );
+  } else {
+    return form;
+  }
 }
