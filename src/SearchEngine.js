@@ -1,5 +1,14 @@
 import React from "react";
 
 export default function SearchEngine() {
-  return <h1>SearchEngine component will be here</h1>;
+  function handleSubmit(event) {
+    event.prevemtDefault();
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="search" placeholder="Enter a city.." />
+      <input type="submit" value="Search" />
+    </form>
+  );
 }
